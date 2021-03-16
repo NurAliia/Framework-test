@@ -2,3 +2,11 @@
 2021-03-14 21:48:54,869 WARN  Sample warn message 
 2021-03-14 21:48:54,870 ERROR Sample error message 
 2021-03-14 21:48:54,870 FATAL Sample fatal message 
+2021-03-16 21:50:56,732 INFO  Sample info message 
+2021-03-16 21:50:56,734 WARN  Sample warn message 
+2021-03-16 21:50:56,734 ERROR Sample error message 
+2021-03-16 21:50:56,735 FATAL Sample fatal message 
+2021-03-16 21:54:46,152 INFO  Sample info message 
+2021-03-16 21:54:46,153 WARN  Sample warn message 
+2021-03-16 21:54:46,154 ERROR Sample error message 
+2021-03-16 21:54:46,183 FATAL Sample fatal message 

@@ -5,7 +5,8 @@ public class ExampleTest extends A_BaseTest
     @Test
     public void loginViaEmail() {
         app.loginPage.open();
-        app.loginPage.login("tomsmith", "SuperSecretPassword!");
+        app.loginPage.login("abc", "abc@mail.ru", "123");
+        app.loginPage.logout();
 
         logger.info("Sample info message");
         logger.warn("Sample warn message");

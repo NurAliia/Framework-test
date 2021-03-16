@@ -6,18 +6,32 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class LoginPage extends BasePage {
 
-    public SelenideElement loginField = $("#username");
-    public SelenideElement passwordField = $("#password");
-    public SelenideElement signInButton = $("button.radius");
+    public SelenideElement enterButton = $("span.wu_entr");
+    public SelenideElement registryButton = $("div.signin-with-reg span.j-wrap");
+    public SelenideElement nameField = $("div.registration-name input");
+    public SelenideElement emailField = $("div.registration-email input");
+    public SelenideElement passwordField = $("div.registration-password input");
+    public SelenideElement signInButton = $("div.registration-actions button[type=\"submit\"]");
+    public SelenideElement profile = $("#mui_user_login_row a");
+
+    public SelenideElement logoutButton = $("a.help2");
 
     public LoginPage(String pageUrl) {
         super(pageUrl);
     }
 
-    public void login(String email, String password) {
-        loginField.setValue(email);
+    public void login(String name, String email, String password) {
+        enterButton.click();
+        registryButton.click();
+        nameField.setValue(name);
+        emailField.setValue(email);
         passwordField.setValue(password);
         signInButton.click();
-        Driver.waitForUrlContains("secure");
+        profile.click();
+        Driver.waitForUrlContains("idwu_=");
+    }
+
+    public void logout() {
+        logoutButton.click();
     }
 }
