@@ -20,11 +20,11 @@
     </test>
 
 
-    <test name="tests with maxPrice = 10000">
-        <parameter name="maxPrice" value="10000" />
-        <classes>
-            <class name="ExampleTest"/>
-        </classes>
-    </test>
+<!--    <test name="tests with maxPrice = 10000">-->
+<!--        <parameter name="maxPrice" value="10000" />-->
+<!--        <classes>-->
+<!--            <class name="ExampleTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
 </suite>

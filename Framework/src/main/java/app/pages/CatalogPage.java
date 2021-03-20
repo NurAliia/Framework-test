@@ -57,51 +57,35 @@ public class CatalogPage extends BasePage {
         submit.scrollTo();
         submit.click();
 
+        int priceInt = Integer.parseInt(price);
+
         int pagesCount;
 
         try {
             pagination.scrollTo();
             pagesCount = Integer.parseInt(lastPage.getText());
+            Assert.assertTrue(!tablets.isEmpty());
         } catch (Exception ex) {
             pagesCount = 1;
         }
 
-        for(int i = 0; i < pagesCount; i++) {
+        for (int i = 0; i < pagesCount; i++) {
             boolean isLastPage = i == pagesCount - 1 ? true : false;
-            checkPriceForPage(price, isLastPage);
 
-            if(!isLastPage) {
+            for (int j = 0; j < tablets.size(); j++) {
+                int id = j + 1;
+                SelenideElement minPrice =
+                    $x("//*[@id=\"list_form1\"]/div["+ id +"]//*[@class='model-hot-prices-td']//*[@class='model-price-range']//a//span[1]");
+
+                Assert.assertTrue(priceInt >
+                        Integer.parseInt(minPrice.getText().replace(" ", "")));
+            }
+
+            if (!isLastPage) {
                 int next = i + 1;
                 // Click next page
                 $("//div[@class='ib page-num']/a[text()=" + next + "]").click();
             }
         }
-    }
-
-    public void checkPriceForPage(String price, Boolean isLastPage) {
-        Assert.assertTrue(!tablets.isEmpty());
-
-        if(!isLastPage) {
-            tablets.remove(tablets.size() - 1);
-        }
-
-        for (SelenideElement tablet: tablets) {
-            int ind = tablets.indexOf(tablet);
-            checkTabletPriceLower(tablet, price, ind);
-        }
-    }
-
-    public void checkTabletPriceLower(SelenideElement tablet, String price, Integer i) {
-        SelenideElement minPrice;
-        int priceInt = Integer.parseInt(price);
-
-        minPrice = tablet.$("div.model-price-range a span[1]");
-
-        System.out.println(minPrice);
-        System.out.println(priceInt >
-                Integer.parseInt(minPrice.getText().replace(" ", "")));
-
-        Assert.assertTrue(priceInt >
-                Integer.parseInt(minPrice.getText().replace(" ", "")));
     }
 }
