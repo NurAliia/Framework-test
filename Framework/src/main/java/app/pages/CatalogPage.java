@@ -72,10 +72,16 @@ public class CatalogPage extends BasePage {
         for (int i = 0; i < pagesCount; i++) {
             boolean isLastPage = i == pagesCount - 1 ? true : false;
 
-            for (int j = 0; j < tablets.size(); j++) {
+            for (int j = 0; j < tablets.size() - 1; j++) {
                 int id = j + 1;
-                SelenideElement minPrice =
-                    $x("//*[@id=\"list_form1\"]/div["+ id +"]//*[@class='model-hot-prices-td']//*[@class='model-price-range']//a//span[1]");
+                SelenideElement minPrice;
+
+                try {
+                    minPrice =
+                            $x("//*[@id=\"list_form1\"]/div["+ id +"]//*[@class='model-hot-prices-td']//*[@class='model-price-range']//a//span[1]");
+                } catch (com.codeborne.selenide.ex.ElementNotFound | Exception ex) {
+                    minPrice = $x("//*[@id=\"list_form1\"]/div["+ id +"]//*[@class='model-hot-prices-td']//div[@class = 'pr31 ib']/span");
+                }
 
                 Assert.assertTrue(priceInt >
                         Integer.parseInt(minPrice.getText().replace(" ", "")));
