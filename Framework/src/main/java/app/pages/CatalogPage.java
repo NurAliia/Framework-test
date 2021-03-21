@@ -47,8 +47,7 @@ public class CatalogPage extends BasePage {
     public SelenideElement table = $("a[href=\"/k30.htm\"]");
     public SelenideElement maxPrice = $("#maxPrice_");
     public SelenideElement pagination = $("div.page-num");
-    public SelenideElement lastPage = $("div.page-num a[last()]");
-    public List<SelenideElement> tablets = $$("#list_form1 div");
+    public List<SelenideElement> tablets = $$("#list_form1 table.model-short-block");
 
     public void searchByPrice(String price) {
         computers.click();
@@ -63,7 +62,7 @@ public class CatalogPage extends BasePage {
 
         try {
             pagination.scrollTo();
-            pagesCount = Integer.parseInt(lastPage.getText());
+            pagesCount = Integer.parseInt(pagination.lastChild().getText());
             Assert.assertTrue(!tablets.isEmpty());
         } catch (Exception ex) {
             pagesCount = 1;
