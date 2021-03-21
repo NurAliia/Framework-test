@@ -28,7 +28,7 @@ public class Driver {
         Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1920x1080";
         Configuration.holdBrowserOpen = false;
-        Configuration.screenshots = false;
+        Configuration.screenshots = true;
 
         if(TestConfig.isHeadless()) {
             Configuration.headless = true;

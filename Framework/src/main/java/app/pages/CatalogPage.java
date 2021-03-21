@@ -73,17 +73,21 @@ public class CatalogPage extends BasePage {
 
             for (int j = 0; j < tablets.size() - 1; j++) {
                 int id = j + 1;
-                SelenideElement minPrice;
+                SelenideElement minPrice = null;
+                SelenideElement minPriceGood = $x("//*[@id=\"list_form1\"]/div["+ id +"]//*[@class='model-hot-prices-td']//*[@class='model-price-range']//a//span[1]");
+                SelenideElement priceGood = $x("//*[@id=\"list_form1\"]/div["+ id +"]//*[@class='model-hot-prices-td']//div[@class = 'pr31 ib']/span");
 
-                try {
-                    minPrice =
-                            $x("//*[@id=\"list_form1\"]/div["+ id +"]//*[@class='model-hot-prices-td']//*[@class='model-price-range']//a//span[1]");
-                } catch (com.codeborne.selenide.ex.ElementNotFound | Exception ex) {
-                    minPrice = $x("//*[@id=\"list_form1\"]/div["+ id +"]//*[@class='model-hot-prices-td']//div[@class = 'pr31 ib']/span");
+                if (minPriceGood.isDisplayed()) {
+                    minPrice = minPriceGood;
+                }
+                else if (priceGood.isDisplayed()) {
+                    minPrice = priceGood;
                 }
 
-                Assert.assertTrue(priceInt >
-                        Integer.parseInt(minPrice.getText().replace(" ", "")));
+                if (minPrice != null) {
+                    Assert.assertTrue(priceInt >
+                            Integer.parseInt(minPrice.getText().replace(" ", "")));
+                }
             }
 
             if (!isLastPage) {
