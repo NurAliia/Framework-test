@@ -278,3 +278,9 @@
 2021-03-21 12:51:20,029 WARN  Sample warn message 
 2021-03-21 12:51:20,029 ERROR Sample error message 
 2021-03-21 12:51:20,029 FATAL Sample fatal message 
+2021-03-23 17:21:08,665 INFO  Sample info message 
+2021-03-23 17:21:36,798 INFO  Sample info message 
+2021-03-23 17:28:35,196 INFO  Sample info message 
+2021-03-23 18:06:01,537 INFO  Sample info message 
+2021-03-23 19:04:36,298 INFO  Sample info message 
+2021-03-23 19:05:53,523 INFO  Sample info message 
